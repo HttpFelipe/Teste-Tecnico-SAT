@@ -36,7 +36,7 @@ export class LoginComponent {
       this.loginService.loginUsuario(dadosCadastro).subscribe({
         next: (response) => {
           this.mensagemErro = null;
-          this.mensagemSucesso = 'Login efetuado com sucesso!';
+          this.mensagemSucesso = 'Acesso Permitido!';
         },
         error: (err) => {
           if (err.status === 400 && err.error?.message) {
