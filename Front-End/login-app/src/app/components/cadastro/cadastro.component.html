@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h2>Cadastro</h2>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+              <div *ngIf="mensagemErro" class="error-message">
+                {{ mensagemErro }}
+              </div>
+              <div class="mb-3">
+                <label for="usuario" class="form-label">Usuário</label>
+                <input type="text" class="form-control" id="usuario" formControlName="usuario" (blur)="onBlur('usuario')">
+                <div *ngIf="cadastroForm.get('usuario')!.touched && cadastroForm.get('usuario')!.invalid" class="text-danger">
+                  <small *ngIf="cadastroForm.get('usuario')!.errors?.['required']">Usuário é obrigatório.</small>
+                  <small *ngIf="cadastroForm.get('usuario')!.errors?.['usuario']">Usuário é inválido.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" formControlName="senha" (blur)="onBlur('senha')">
+                <div *ngIf="cadastroForm.get('senha')!.touched && cadastroForm.get('senha')!.invalid" class="text-danger">
+                  <small *ngIf="cadastroForm.get('senha')!.errors?.['required']">Senha é obrigatória.</small>
+                  <small *ngIf="cadastroForm.get('senha')!.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="confirmSenha" class="form-label">Confirmar senha</label>
+                <input type="password" class="form-control" id="confirmSenha" formControlName="confirmSenha" (blur)="onBlur('confirmSenha')">
+                <div *ngIf="cadastroForm.get('confirmSenha')!.touched && cadastroForm.get('confirmSenha')!.invalid" class="text-danger">
+                  <small *ngIf="cadastroForm.get('confirmSenha')!.errors?.['required']">Confirmar a senha é obrigatório.</small>
+                  <small *ngIf="cadastroForm.get('confirmSenha')!.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</small>
+                </div>
+                <div *ngIf="senhaDiferente" class="text-danger">
+                  <small>As senhas informadas são diferentes.</small>
+                </div>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary" [disabled]="cadastroForm.invalid">Cadastrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
