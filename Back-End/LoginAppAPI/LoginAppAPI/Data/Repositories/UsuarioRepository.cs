@@ -65,7 +65,8 @@ namespace LoginAppAPI.Data.Repositories
             {
                 return new UsuarioResponseModel
                 {
-                    Error = true
+                    Error = true,
+                    Body = "Usuário ou Senha incorretos!"
                 };
             }
         }

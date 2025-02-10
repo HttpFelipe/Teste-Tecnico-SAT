@@ -35,7 +35,7 @@ namespace LoginAppAPI.Controllers
 
             if (result.Error)
             {
-                return NotFound();
+                return NotFound(new { message = result.Body });
             }
 
             return Ok();
