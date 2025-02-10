@@ -42,7 +42,7 @@ export class LoginComponent {
           if (err.status === 400 && err.error?.message) {
             this.mensagemErro = err.error.message;
           } else {
-            this.mensagemErro = 'Usuário ou Senha incorretos!';
+            this.mensagemErro = 'Erro inesperado ao fazer login.';
           }
           this.mensagemSucesso = null;
         }
